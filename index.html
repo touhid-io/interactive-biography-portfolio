@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Touhidul Islam - Strategic Storyteller & Power Dynamics Analyst</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --quantum-cyan: #00D4FF;
+            --state-gold: #FFB800;
+            --jet-black: #0A0A0A;
+            --dark-gray: #1A1A1A;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 100%);
+            color: #FFFFFF;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .quantum-gradient {
+            background: linear-gradient(135deg, var(--quantum-cyan) 0%, var(--state-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .border-quantum {
+            border-color: var(--quantum-cyan);
+        }
+        
+        .bg-quantum {
+            background-color: var(--quantum-cyan);
+        }
+        
+        .bg-gold {
+            background-color: var(--state-gold);
+        }
+        
+        .text-quantum {
+            color: var(--quantum-cyan);
+        }
+        
+        .text-gold {
+            color: var(--state-gold);
+        }
+        
+        .card-glass {
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .card-glass:hover {
+            border-color: var(--quantum-cyan);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+            transform: translateY(-5px);
+        }
+        
+        .pillar-card {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(42, 42, 42, 0.7) 100%);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .pillar-card:hover {
+            border-color: var(--state-gold);
+            box-shadow: 0 0 30px rgba(255, 184, 0, 0.3);
+            transform: scale(1.05);
+        }
+        
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent 0%, var(--quantum-cyan) 50%, transparent 100%);
+            margin: 3rem 0;
+        }
+        
+        .hero-section {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 50%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        
+        .skill-badge {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2) 0%, rgba(255, 184, 0, 0.2) 100%);
+            border: 1px solid var(--quantum-cyan);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            display: inline-block;
+            margin: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-badge:hover {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.4) 0%, rgba(255, 184, 0, 0.4) 100%);
+            transform: scale(1.1);
+        }
+        
+        .entj-container {
+            background: linear-gradient(135deg, rgba(255, 184, 0, 0.1) 0%, rgba(0, 212, 255, 0.1) 100%);
+            border: 2px solid var(--state-gold);
+            border-radius: 12px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .entj-container::before {
+            content: 'ENTJ-A';
+            position: absolute;
+            top: -30px;
+            right: -30px;
+            font-size: 120px;
+            font-weight: 900;
+            color: rgba(255, 184, 0, 0.05);
+            transform: rotate(-15deg);
+        }
+        
+        .metric-card {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(255, 184, 0, 0.1) 100%);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .metric-card:hover {
+            border-color: var(--state-gold);
+            box-shadow: 0 0 25px rgba(255, 184, 0, 0.3);
+        }
+        
+        .timeline-item {
+            border-left: 3px solid var(--quantum-cyan);
+            padding-left: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            background: var(--quantum-cyan);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--quantum-cyan);
+        }
+        
+        .floating-icon {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .quote-section {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05) 0%, rgba(255, 184, 0, 0.05) 100%);
+            border-left: 4px solid var(--state-gold);
+            padding: 2rem;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+        
+        .chart-container {
+            background: rgba(26, 26, 26, 0.9);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            margin: 2rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="max-w-6xl mx-auto text-center px-8 z-10">
+            <div class="mb-8">
+                <span class="text-6xl floating-icon">⚡</span>
+            </div>
+            <h1 class="text-7xl font-black quantum-gradient mb-6 leading-tight">
+                TOUHIDUL ISLAM
+            </h1>
+            <h2 class="text-3xl font-bold text-white mb-8">
+                Strategic Storyteller | Power Dynamics Analyst | ENTJ Commander
+            </h2>
+            <div class="bg-gradient-to-r from-transparent via-quantum-cyan to-transparent h-1 w-full mb-12"></div>
+            <blockquote class="text-2xl italic text-gold font-medium mb-16">
+                "Logic is the product. Storytelling is the delivery system."
+            </blockquote>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+                <div class="card-glass p-6 rounded-lg">
+                    <i class="fas fa-chess-king text-4xl text-quantum mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Power Dynamics</h3>
+                    <p class="text-gray-300">Deconstructing empires, analyzing economic warfare, understanding what drives nations</p>
+                </div>
+                <div class="card-glass p-6 rounded-lg">
+                    <i class="fas fa-pen-nib text-4xl text-gold mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Strategic Writing</h3>
+                    <p class="text-gray-300">Transforming complexity into compelling narratives that captivate mass audiences</p>
+                </div>
+                <div class="card-glass p-6 rounded-lg">
+                    <i class="fas fa-brain text-4xl text-quantum mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Business Mindset</h3>
+                    <p class="text-gray-300">Understanding ROI, brand value and scalability beyond traditional writing</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- Who Am I Section -->
+    <div class="py-16 px-8">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-5xl font-black quantum-gradient mb-12 text-center">WHO AM I?</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <div class="quote-section mb-8">
+                        <p class="text-xl text-white">
+                            "On paper, I am a Management student. In reality, I am an aspiring Entrepreneur and a student of Power Dynamics."
+                        </p>
+                    </div>
+                    <p class="text-lg mb-6 text-gray-300">
+                        I don't watch trends, I <span class="text-quantum font-bold">analyze</span> them. My obsession lies in understanding what drives the world, whether it's the brutal history of fallen empires or the economic warfare of modern nations.
+                    </p>
+                    <p class="text-lg mb-6 text-gray-300">
+                        While others consume content, I <span class="text-gold font-bold">deconstruct systems</span>. I study the mechanics of power, the psychology of markets and the patterns that separate empires from footnotes in history.
+                    </p>
+                </div>
+                <div class="card-glass p-8 rounded-lg">
+                    <h3 class="text-2xl font-bold text-quantum mb-6">Core Obsessions</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <i class="fas fa-crown text-2xl text-gold mr-4 mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">Fallen Empires</h4>
+                                <p class="text-gray-400 text-sm">Understanding the brutal history and strategic failures of collapsed civilizations</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-chart-line text-2xl text-quantum mr-4 mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">Economic Warfare</h4>
+                                <p class="text-gray-400 text-sm">Analyzing modern nations' financial strategies and market domination tactics</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-globe-asia text-2xl text-gold mr-4 mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">Geopolitical Chess</h4>
+                                <p class="text-gray-400 text-sm">Tracking power shifts, alliance formations and strategic positioning</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-building text-2xl text-quantum mr-4 mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">Business History</h4>
+                                <p class="text-gray-400 text-sm">Studying corporate rise and fall, market disruptions and entrepreneurial warfare</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- My Craft Section -->
+    <div class="py-16 px-8">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-5xl font-black quantum-gradient mb-12 text-center">MY CRAFT</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
+                <div class="card-glass p-8 rounded-lg">
+                    <h3 class="text-2xl font-bold text-gold mb-6">Writing as a Weapon</h3>
+                    <p class="text-lg mb-6">
+                        Writing is not just a job for me, it is a <span class="text-quantum font-bold">tool to deconstruct complexity</span>. I take heavy, boring, or chaotic topics and turn them into narratives that people cannot stop consuming.
+                    </p>
+                    <div class="bg-gray-900 p-4 rounded-lg mb-6">
+                        <p class="text-center text-xl font-bold text-quantum">
+                            Logic = Product<br/>
+                            <span class="text-white">+</span><br/>
+                            Storytelling = Delivery System
+                        </p>
+                    </div>
+                    <p class="text-gray-300">
+                        In the attention economy, capturing minds requires more than facts. It requires architecture, building narratives that pull audiences through complex ideas effortlessly.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-quantum mb-6">What Makes Me Different</h3>
+                    <div class="space-y-4">
+                        <div class="pillar-card p-6 rounded-lg">
+                            <div class="flex items-center mb-3">
+                                <span class="bg-quantum text-black w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4 text-lg">1</span>
+                                <h4 class="font-bold text-lg">Business Understanding</h4>
+                            </div>
+                            <p class="text-gray-300 text-sm pl-14">I don't just write about business, I understand ROI, brand value and scalability from an entrepreneurial lens</p>
+                        </div>
+                        <div class="pillar-card p-6 rounded-lg">
+                            <div class="flex items-center mb-3">
+                                <span class="bg-gold text-black w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4 text-lg">2</span>
+                                <h4 class="font-bold text-lg">Complexity Simplification</h4>
+                            </div>
+                            <p class="text-gray-300 text-sm pl-14">Geopolitics and business history are dense, I make them digestible without losing depth</p>
+                        </div>
+                        <div class="pillar-card p-6 rounded-lg">
+                            <div class="flex items-center mb-3">
+                                <span class="bg-quantum text-black w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4 text-lg">3</span>
+                                <h4 class="font-bold text-lg">Attention Engineering</h4>
+                            </div>
+                            <p class="text-gray-300 text-sm pl-14">I architect narratives that hold attention spans, driving engagement through strategic pacing</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="metric-card">
+                    <i class="fas fa-scroll text-3xl text-quantum mb-3"></i>
+                    <h4 class="font-bold text-lg mb-2">Geopolitics</h4>
+                    <p class="text-xs text-gray-400">Empire dynamics decoded</p>
+                </div>
+                <div class="metric-card">
+                    <i class="fas fa-history text-3xl text-gold mb-3"></i>
+                    <h4 class="font-bold text-lg mb-2">History</h4>
+                    <p class="text-xs text-gray-400">Patterns that shaped nations</p>
+                </div>
+                <div class="metric-card">
+                    <i class="fas fa-briefcase text-3xl text-quantum mb-3"></i>
+                    <h4 class="font-bold text-lg mb-2">Business</h4>
+                    <p class="text-xs text-gray-400">Corporate warfare analysis</p>
+                </div>
+                <div class="metric-card">
+                    <i class="fas fa-book-reader text-3xl text-gold mb-3"></i>
+                    <h4 class="font-bold text-lg mb-2">Storytelling</h4>
+                    <p class="text-xs text-gray-400">Narrative architecture</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- ENTJ Edge Section -->
+    <div class="py-16 px-8">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-5xl font-black quantum-gradient mb-12 text-center">THE ENTJ-A EDGE</h2>
+            <div class="entj-container mb-12">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-3xl font-bold text-gold mb-6">COMMANDER PERSONALITY</h3>
+                        <p class="text-xl mb-6">
+                            As an <span class="text-quantum font-black">ENTJ-A (Commander)</span>, I am driven by logic and efficiency. I take complex, heavy topics and turn them into narratives that mass audiences can digest.
+                        </p>
+                        <div class="bg-black bg-opacity-50 p-6 rounded-lg">
+                            <p class="text-2xl font-bold text-center">
+                                <span class="text-quantum">Logic</span> is the product<br/>
+                                <span class="text-white text-lg">+</span><br/>
+                                <span class="text-gold">Storytelling</span> is the delivery system
+                            </p>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-quantum mb-6">ENTJ Core Strengths</h3>
+                        <div class="space-y-4">
+                            <div class="bg-gray-900 bg-opacity-70 p-4 rounded-lg border-l-4 border-quantum">
+                                <h4 class="font-bold text-lg mb-2">Strategic Vision</h4>
+                                <p class="text-gray-300 text-sm">Long-term thinking, pattern recognition and systemic understanding</p>
+                            </div>
+                            <div class="bg-gray-900 bg-opacity-70 p-4 rounded-lg border-l-4 border-gold">
+                                <h4 class="font-bold text-lg mb-2">Ruthless Efficiency</h4>
+                                <p class="text-gray-300 text-sm">Eliminating waste, optimizing processes, maximizing output</p>
+                            </div>
+                            <div class="bg-gray-900 bg-opacity-70 p-4 rounded-lg border-l-4 border-quantum">
+                                <h4 class="font-bold text-lg mb-2">Logic-Driven Execution</h4>
+                                <p class="text-gray-300 text-sm">Data-based decisions, objective analysis, emotional detachment</p>
+                            </div>
+                            <div class="bg-gray-900 bg-opacity-70 p-4 rounded-lg border-l-4 border-gold">
+                                <h4 class="font-bold text-lg mb-2">Leadership Instinct</h4>
+                                <p class="text-gray-300 text-sm">Natural command presence, decisiveness, responsibility ownership</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chart-container">
+                <h3 class="text-2xl font-bold text-center text-quantum mb-6">ENTJ Capability Matrix</h3>
+                <canvas id="entjChart" width="400" height="300"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- Skills & Expertise -->
+    <div class="py-16 px-8">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-5xl font-black quantum-gradient mb-12 text-center">SKILLS & EXPERTISE</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+                <div class="card-glass p-8 rounded-lg">
+                    <h3 class="text-2xl font-bold text-quantum mb-6 flex items-center">
+                        <i class="fas fa-tools mr-3"></i>
+                        Hard Skills
+                    </h3>
+                    <div class="flex flex-wrap">
+                        <span class="skill-badge">Strategic Writing</span>
+                        <span class="skill-badge">Content Architecture</span>
+                        <span class="skill-badge">Narrative Design</span>
+                        <span class="skill-badge">Business Analysis</span>
+                        <span class="skill-badge">Geopolitical Research</span>
+                        <span class="skill-badge">Historical Analysis</span>
+                        <span class="skill-badge">ROI Optimization</span>
+                        <span class="skill-badge">Brand Strategy</span>
+                        <span class="skill-badge">Market Research</span>
+                        <span class="skill-badge">Attention Engineering</span>
+                    </div>
+                </div>
+                <div class="card-glass p-8 rounded-lg">
+                    <h3 class="text-2xl font-bold text-gold mb-6 flex items-center">
+                        <i class="fas fa-lightbulb mr-3"></i>
+                        Soft Skills
+                    </h3>
+                    <div class="flex flex-wrap">
+                        <span class="skill-badge">Strategic Thinking</span>
+                        <span class="skill-badge">Systems Analysis</span>
+                        <span class="skill-badge">Leadership</span>
+                        <span class="skill-badge">Decision Making</span>
+                        <span class="skill-badge">Pattern Recognition</span>
+                        <span class="skill-badge">Critical Thinking</span>
+                        <span class="skill-badge">Efficiency Optimization</span>
+                        <span class="skill-badge">Execution Focus</span>
+                        <span class="skill-badge">Long-term Vision</span>
+                        <span class="skill-badge">Ownership Mindset</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="pillar-card p-6 rounded-lg text-center">
+                    <i class="fas fa-bullseye text-5xl text-quantum mb-4"></i>
+                    <h4 class="text-xl font-bold mb-3">Strategic Focus</h4>
+                    <p class="text-gray-300 text-sm">Understanding what drives impact, not just what looks impressive</p>
+                </div>
+                <div class="pillar-card p-6 rounded-lg text-center">
+                    <i class="fas fa-rocket text-5xl text-gold mb-4"></i>
+                    <h4 class="text-xl font-bold mb-3">Execution Speed</h4>
+                    <p class="text-gray-300 text-sm">Converting strategy into action with minimal friction and delay</p>
+                </div>
+                <div class="pillar-card p-6 rounded-lg text-center">
+                    <i class="fas fa-trophy text-5xl text-quantum mb-4"></i>
+                    <h4 class="text-xl font-bold mb-3">Results Orientation</h4>
+                    <p class="text-gray-300 text-sm">Measuring success by outcomes, not effort or hours invested</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- My Goal Section -->
+    <div class="py-16 px-8">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-5xl font-black quantum-gradient mb-12 text-center">MY GOAL WITH YOU</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
+                <div>
+                    <div class="quote-section mb-8">
+                        <p class="text-2xl text-white font-semibold">
+                            "I am here because I believe <span class="text-quantum">Iron sharpens Iron</span>."
+                        </p>
+                    </div>
+                    <p class="text-lg mb-6">
+                        I want to contribute to the <span class="text-gold font-bold">Nafees Salim brand</span> with my strategic skills while learning from your execution mastery.
+                    </p>
+                    <p class="text-lg mb-6">
+                        I am ready to treat your brand with the <span class="text-quantum font-bold">same ownership</span> as I would treat my own, because that's what separates contributors from passengers.
+                    </p>
+                    <div class="bg-gradient-to-r from-quantum to-gold p-1 rounded-lg mt-8">
+                        <div class="bg-jet-black p-6 rounded-lg">
+                            <p class="text-xl font-bold text-center">
+                                Not here to just work.<br/>
+                                Here to <span class="text-quantum">build empires</span>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-quantum mb-6">What I Bring to the Table</h3>
+                    <div class="space-y-4">
+                        <div class="timeline-item">
+                            <h4 class="font-bold text-gold text-lg mb-2">Strategic Contribution</h4>
+                            <p class="text-gray-300 text-sm">Not just execution, strategic thinking that elevates brand positioning and market impact</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4 class="font-bold text-gold text-lg mb-2">Ownership Mentality</h4>
+                            <p class="text-gray-300 text-sm">Treating every project as if my name is on it, because reputation is built on consistent excellence</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4 class="font-bold text-gold text-lg mb-2">Learning Velocity</h4>
+                            <p class="text-gray-300 text-sm">Absorbing your execution frameworks while contributing my analytical edge</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4 class="font-bold text-gold text-lg mb-2">Long-term Vision</h4>
+                            <p class="text-gray-300 text-sm">Not seeking a job, seeking a partnership where we both level up</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card-glass p-10 rounded-lg text-center">
+                <h3 class="text-3xl font-bold text-quantum mb-4">The Philosophy</h3>
+                <p class="text-xl text-gray-300 mb-6">
+                    In a world of average writers, I offer strategic narrative architecture.<br/>
+                    In a world of content creators, I offer business-minded execution.<br/>
+                    In a world of employees, I offer ownership mentality.
+                </p>
+                <div class="inline-block bg-gradient-to-r from-quantum to-gold p-1 rounded-lg">
+                    <div class="bg-jet-black px-8 py-4 rounded-lg">
+                        <p class="text-2xl font-black text-white">
+                            Let's build something <span class="text-gold">legendary</span>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- Core Principles -->
+    <div class="py-16 px-8">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-5xl font-black quantum-gradient mb-12 text-center">CORE PRINCIPLES</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="pillar-card p-6 rounded-lg">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-shield-alt text-5xl text-quantum"></i>
+                    </div>
+                    <h4 class="font-bold text-lg text-center mb-3">Integrity</h4>
+                    <p class="text-gray-300 text-sm text-center">Promise made, promise delivered. Reputation is currency.</p>
+                </div>
+                <div class="pillar-card p-6 rounded-lg">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-fire text-5xl text-gold"></i>
+                    </div>
+                    <h4 class="font-bold text-lg text-center mb-3">Excellence</h4>
+                    <p class="text-gray-300 text-sm text-center">Good enough is never enough. Pursue mastery relentlessly.</p>
+                </div>
+                <div class="pillar-card p-6 rounded-lg">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-brain text-5xl text-quantum"></i>
+                    </div>
+                    <h4 class="font-bold text-lg text-center mb-3">Intelligence</h4>
+                    <p class="text-gray-300 text-sm text-center">Work smart AND hard. Efficiency multiplies impact.</p>
+                </div>
+                <div class="pillar-card p-6 rounded-lg">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-crown text-5xl text-gold"></i>
+                    </div>
+                    <h4 class="font-bold text-lg text-center mb-3">Ownership</h4>
+                    <p class="text-gray-300 text-sm text-center">Act like an owner, think like a partner, deliver like a champion.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- Contact/Footer Section -->
+    <div class="py-16 px-8 bg-gradient-to-b from-transparent to-black">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-black quantum-gradient mb-8">LET'S CONNECT</h2>
+            <p class="text-xl text-gray-300 mb-12">
+                If you value strategic thinking, ownership mentality and narrative mastery, let's talk.
+            </p>
+            <div class="flex justify-center space-x-6 mb-12">
+                <a href="#" class="card-glass p-4 rounded-full hover:bg-quantum transition-all">
+                    <i class="fab fa-linkedin text-3xl"></i>
+                </a>
+                <a href="#" class="card-glass p-4 rounded-full hover:bg-gold transition-all">
+                    <i class="fab fa-twitter text-3xl"></i>
+                </a>
+                <a href="#" class="card-glass p-4 rounded-full hover:bg-quantum transition-all">
+                    <i class="fas fa-envelope text-3xl"></i>
+                </a>
+                <a href="#" class="card-glass p-4 rounded-full hover:bg-gold transition-all">
+                    <i class="fab fa-github text-3xl"></i>
+                </a>
+            </div>
+            <div class="bg-gradient-to-r from-transparent via-quantum to-transparent h-1 w-full mb-8"></div>
+            <p class="text-gray-500 text-sm">
+                © 2026 Touhidul Islam | Crafted with strategic precision and ENTJ efficiency
+            </p>
+        </div>
+    </div>
+
+    <!-- Chart.js Scripts -->
+    <script>
+        // ENTJ Capability Chart
+        const entjCtx = document.getElementById('entjChart').getContext('2d');
+        new Chart(entjCtx, {
+            type: 'radar',
+            data: {
+                labels: ['Strategic Thinking', 'Logic & Analysis', 'Execution Speed', 'Leadership', 'Efficiency', 'Long-term Vision'],
+                datasets: [{
+                    label: 'ENTJ-A Strengths',
+                    data: [95, 90, 88, 92, 94, 96],
+                    backgroundColor: 'rgba(0, 212, 255, 0.2)',
+                    borderColor: 'rgba(0, 212, 255, 1)',
+                    borderWidth: 2,
+                    pointBackgroundColor: 'rgba(255, 184, 0, 1)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgba(255, 184, 0, 1)'
+                }]
+            },
+            options: {
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
+                            color: '#888',
+                            backdropColor: 'transparent'
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        },
+                        pointLabels: {
+                            color: '#00D4FF',
+                            font: {
+                                size: 12
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: '#FFB800'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
